@@ -115,7 +115,7 @@ describe('Students API', () => {
                     console.log('Cannot get api')
                 }
                 response.should.have.status(400);
-                response.body.should.be.a('object');
+                response.body.should.be.a('object');4
                 response.body.should.have.property('error').eq('null value in column \"name\" of relation \"students\" violates not-null constraint');
                 response.body.should.have.property('success').eq(false);
                 done();
@@ -175,8 +175,9 @@ describe('Students API', () => {
 
     describe("GET /api/students", () => {
         it("It should GET the students who are passed", (done) => {
+            let params = "passed";
             chai.request('http://localhost:8000')
-            .get('/api/students?resultStatus=passed')
+            .get('/api/students?resultStatus='+params)
             .end((err, response) => {
                 if(err) {
                     console.log('Cannot get api')
@@ -189,8 +190,9 @@ describe('Students API', () => {
         });
 
         it("It should GET the students who are failed", (done) => {
+            let params = "failed";
             chai.request('http://localhost:8000')
-            .get('/api/students?resultStatus=failed')
+            .get('/api/students?resultStatus='+params)
             .end((err, response) => {
                 if(err) {
                     console.log('Cannot get api')
